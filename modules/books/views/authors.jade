@@ -1,0 +1,17 @@
+extends ../../site/site.jade
+
+block head
+    h1 Писатели
+    //.sort-block
+    //    p Сортировать по:&nbsp;
+    //        - var authorOrderParams = {name : 'имени', books: 'количеству книг'}
+    //        - each authorOrderLabel, authorOrderParam in authorOrderParams
+    //            label(for="#{authorOrderParam}" ng-class="{active: authorOrder == '#{authorOrderParam}'}")= authorOrderLabel
+    //            input(type="radio" name="authorOrder" value="#{authorOrderParam}" id="#{authorOrderParam}" ng-model="authorOrder")
+
+block main
+    #authors(ng-if="authors.length" ng-repeat="author in authors | orderBy: 'name'")
+        p
+            a(ng-href="#/books/?author={{author.name}}") {{::author.name}} (книг: {{::author.books}})
+
+    p(ng-if="!authors.length") Нет ни одного писателя

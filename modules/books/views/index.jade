@@ -1,0 +1,89 @@
+extends ../../site/site.jade
+
+block head
+    h1 {{getTitle()}} (книг: {{books.length}} шт)
+    .sort-block
+        p Сортировать по:&nbsp;
+            - var bookOrderParams = {title : 'названию', author: 'автору', year: 'году публикации', rating: 'рейтингу'}
+            select(ng-model="bookOrder")
+                - each bookOrderLabel, bookOrderParam in bookOrderParams
+                    option(value="#{bookOrderParam}")= bookOrderLabel
+
+
+block main
+    p(ng-if="!books.length") Нет ни одной книги
+
+    p {{filteredBooks.length}}
+    #books(ng-if="books.length"
+           when-scrolled = "loadMoreBooks()"
+           itemscope
+           itemtype="http://schema.org/Book"
+    )
+        article.book(ng-repeat="book in filteredBooks = (books | filter: rating | filter: genreFilter | filter: attrs | orderBy: bookOrder | filter: query | limitTo: booksQuantity)")
+            .extra-block(ng-if="book.cover")
+
+                img.cover(
+                ng-if="book.cover"
+                ng-src="{{book.cover}}"
+                alt="Обложка книги \"{{book.title}}\"")
+
+            .description-block
+                p: span.fa.fa-trash.pull-right(ng-click="delete(book.id)")
+                h2: a(
+                    ng-href="#/books/{{book.id}}"
+                    ng-bind="book.title"
+                    data-title="Редактировать эту книгу"
+                    itemprop="name")
+
+                p: a(
+                    ng-href="#/books?author={{book.author}}"
+                    ng-bind="book.author"
+                    data-title="Все книги писателя"
+                    itemprop="author")
+
+                p.review(ng-if="book.review"
+                         ng-bind="book.review"
+                         itemprop="description")
+            .info-block
+                p.pull-right: a(ng-if="book.url" ng-href="{{book.url}}" data-title="Перейти к чтению книги") Читать
+
+                p.rating(itemprop="aggregateRating"
+                         itemscope
+                         itemtype="http://schema.org/AggregateRating")
+                    a(ng-href="#/books?rating={{book.rating}}"
+                      data-title="Книги с таким же рейтингом") Рейтинг&nbsp;
+                    meta(itemprop="ratingValue" content="book.rating")/
+                    meta(itemprop="bestRating" content="5")/
+                    meta(itemprop="worstRating" content="1")/
+                    span.stars
+                        label(ng-repeat-start="star in getStarsRange(5)" for="{{book.title+star}}" ng-class="{active: getRating($index) <= book.rating}") ☆
+                        input(ng-repeat-end="" ng-click="saveRating(book)" id="{{book.title + star}}" type="radio" ng-model="book.rating" ng-value="getRating($index)")
+
+                p(ng-if="book.year" itemprop="genre") Жанр:&nbsp;
+                    a(ng-href="#/books?genre={{book.genre}}"
+                      ng-bind="book.genre"
+                      data-title="Все книги этого жанра")
+                p(ng-if="book.year")
+                    | Год издания:&nbsp;
+                    span(itemprop="datePublished") {{book.year}}
+
+block aside
+    .block
+        input.search(ng-model="query" placeholder="Поиск")
+        hr
+        p.center Выбрать жанр
+        select(ng-model="genreFilter.genre")
+            option(value="" selected) Все
+            option(ng-value="genre" ng-repeat="genre in getProps('genre')" ng-bind="genre")
+
+        hr
+        a.center(ng-href="#/books?rating=5") Лучшие книги
+        hr
+        a.btn(ng-href="#/books/create") Добавить книгу
+    .block
+        button.btn(ng-click="loadDemo()") Загрузить демо данные
+    .block
+        button.btn(ng-click="exportBooks()") Экспорт
+        hr
+        input(type="file" id="files")
+        label.btn(for="files" ng-click="import()") Импорт

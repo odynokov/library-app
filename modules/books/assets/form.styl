@@ -1,0 +1,83 @@
+@import '../../../node_modules/nib/lib/nib/index'
+
+.form-container
+  max-width 360px
+  width 100%
+  margin: 0 auto
+
+#create-book-form
+  background-color: #ddd
+  padding 20px
+  box-shadow 0 0 2px #000
+  margin-bottom 30px
+  animation Appear .5s ease-in-out
+
+  button
+    width: 100%
+    background: #223E57
+    padding 10px 20px
+    border 0
+    color #fff
+
+    &:hover
+      background: lighten(#223E57, 20)
+
+    &[disabled]
+      background #ccc
+      &:hover
+        background #ccc
+
+
+  .rating-controls
+    text-align center
+    input
+      display none
+
+    label
+      padding 5px 10px
+      cursor pointer
+
+      &:hover
+        background: darken(#67a7ff, 10)
+        color #fff
+
+  .active
+    background: #67a7ff
+    color #fff
+
+  .controls
+    padding 10px
+    border-bottom 1px solid #ccc
+    maring-bottom 20px
+
+  label
+    padding-bottom 10px
+    display inline-block
+
+  input,
+  textarea
+    width 93%
+    padding 10px 15px
+
+  textarea
+    height 120px
+
+  input.ng-invalid,
+  textarea.ng-invalid
+    border 2px solid #f00
+    box-shadow 0 0 2px #f00
+
+    & ~ p
+      color #f00
+
+a.btn
+  margin 5px 0
+  background: #223E57
+  text-decoration: none
+  padding: 10px 15px
+  color #fff
+  display: inline-block
+  width 90%
+  text-align center
+  &:hover
+    background: lighten(#223E57, 20)

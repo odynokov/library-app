@@ -1,0 +1,14 @@
+nav
+ ul.container
+    li: a(ng-class="{active: isActive('/books')}" href="#/books") Книги
+    li: a(ng-class="{active: isActive('/authors')}" href="#/authors") Писатели
+    li.pull-right.toggle-sidebar-button: a(href=""): span(onclick="toggleSideBar()").bars &nbsp;
+.container
+    header
+        block head
+    main
+        block main
+    aside
+        block aside
+
+block form

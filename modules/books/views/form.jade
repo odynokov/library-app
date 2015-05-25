@@ -1,0 +1,94 @@
+extends ../../site/site.jade
+
+block form
+    .form-container
+        form#create-book-form(name="create_book_form"
+                              novalidate)
+
+            h1(ng-bind="form_title")
+            .controls
+                label(for="author") * Автор: {{book.author}}
+                input(autofocus
+                      name="author"
+                      type="text"
+                      required
+                      pattern="[^<>]+"
+                      placeholder="Лев Толстой"
+                      ng-model="book.author")
+                p(ng-show="create_book_form.author.$touched && create_book_form.author.$error.required") Введите имя автора книги
+                p(ng-show="create_book_form.author.$error.pattern") Символы < и > запрещены
+
+            .controls
+                label(for="title") * Заголовок: {{book.title}}
+                input(name="title"
+                      type="text"
+                      required
+                      pattern="[^<>]+"
+                      data-hint="Введите заголовок книги"
+                      placeholder="Анна Каренина"
+                      ng-model="book.title")
+                p(ng-show="create_book_form.title.$touched && create_book_form.title.$error.required") Введите заголовок книги
+                p(ng-show="create_book_form.title.$error.pattern") Символы < и > запрещены
+
+
+            .controls
+                label(for="rating") Рейтинг: {{book.rating}}
+                .rating-controls
+                    - each item in _.range(5)
+                        label(for="rating_#{item + 1}"
+                              ng-class="{active: book.rating == #{item + 1}}") #{item + 1}
+                        input(type="radio"
+                              id="rating_#{item + 1}"
+                              ng-model="book.rating"
+                              name="rating"
+                              value="#{item + 1}")
+
+            .controls
+                label(for="year") Год публикации: {{book.year}}
+                input(name="year"
+                      type="text"
+                      pattern="[^<>]+"
+                      placeholder="1877"
+                      ng-model="book.year")
+                p(ng-show="create_book_form.year.$error.pattern") Символы < и > запрещены
+
+            .controls
+                label(for="genre") Жанр: {{book.genre}}
+                input(name="genre"
+                      type="text"
+                      pattern="[а-я А-Я ёЁ \`ґєҐЄ´ІіЇї a-z A-Z ' \- \s]+"
+                      placeholder="роман"
+                      ng-model="book.genre")
+                p(ng-show="create_book_form.genre.$error.pattern") Можно использовать только буквы и дефис
+
+            .controls
+                label(for="review") Краткое описание
+                textarea(name="review"
+                         type="text"
+                         pattern="[^<>]+"
+                         placeholder="Краткое описание"
+                         ng-model="book.review")
+                p(ng-show="create_book_form.review.$error.pattern") Символы < и > запрещены
+
+
+            .controls
+                label(for="cover") Обложка
+                input(name="cover"
+                      type="url"
+                      placeholder="http://site.com/cover.jpg"
+                      ng-model="book.cover")
+                p(ng-show="create_book_form.cover.$error.url") Введите ссылку
+
+            .controls
+                label(for="url") Ссылка на книгу
+                input(name="url"
+                      type="url"
+                      placeholder="http://site.com/book.html"
+                      ng-model="book.url")
+                p(ng-show="create_book_form.url.$error.url") Введите ссылку
+
+            .controls
+                button(ng-click="save()"
+                       type="submit"
+                       ng-disabled="create_book_form.$invalid") Сохранить
+                a.btn(href="#/books" title="Отмена") Отмена

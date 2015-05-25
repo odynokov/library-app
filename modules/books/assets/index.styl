@@ -1,0 +1,163 @@
+//@import 'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'
+
+trash()
+  background url('data:image/png; base64, iVBORw0KGgoAAAANSUhEUgAAABEAAAASCAYAAAC9+TVUAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAC9SURBVDiN7ZTNCcMwDIVfGk8iDRJ3iKwScoszWbKAR/AMXiBGPZQU1z9JA+2tDwRCEh9PBrkREaRiZq2UmrZt03utbVuEEGbnnEnnbxnhqSUGAEAIAQCmcRwzCETkLYhIE5EMw2AKPSGiJa03fd8ba23M7QBoAHPBYbGnvPd7I9VUWTXvJVazFWoRz9ce9pKKEGYWZjZH+SnkK07+kN9BZgDrSf6SKhHic6/lnzi5pGb/lJh5QfkQj3R3zq0PFPKTWkg0z/cAAAAASUVORK5CYII=') no-repeat
+  opacity .5
+  &:hover
+    opacity 1
+
+toolTip()
+  content attr(data-title)
+  position absolute
+  padding 5px 10px
+  background: #5065ee
+  left 105%
+  top -5px
+  font-weight 400
+  z-index: 1000
+  display block
+  white-space: nowrap
+  text-align center
+  font-size 14px
+  color #fff
+
+button()
+  background: #223E57
+  text-decoration: none
+  padding: 10px 15px
+  color #fff
+  border 0
+  width 100%
+  &:hover
+    background: lighten(#223E57, 20)
+
+.center
+  text-align: center
+  display: block
+
+.extra-block
+  float left
+
+  min-height 150px
+  padding 10px
+  img
+    max-width 90px
+
+.description-block
+  overflow: hidden
+  position: relative
+  padding 10px
+
+  & p.review
+    border-top 1px solid darken(#ddd, 10)
+    margin-top 10px
+    padding-top 10px
+
+  & .fa-trash
+    trash()
+    width 17px
+    height 18px
+    cursor: pointer;
+    display: none
+
+article
+  h2,
+  p
+    margin 0
+
+    a
+      text-decoration: none
+      color #5065ee
+      position relative
+
+      &:hover
+        color darken(#5065ee, 30)
+        &::after
+          toolTip()
+          z-index 1000
+
+  &.book
+    background: #ddd
+    margin-bottom 10px
+    box-shadow 0 0 1px #000
+
+    a:hover
+      &::after
+        content attr(data-title)
+          width 100px
+          height: 20px
+
+    &:hover
+      box-shadow 0 0 5px #000
+
+
+      .fa-trash
+        display: block
+
+.info-block
+  clear both
+  padding 0
+  margin 0
+  background: darken(#ddd, 6)
+
+  p
+    display: inline-block
+    padding 5px 10px
+
+    &.rating
+      width 160px
+
+    span.stars
+      font-size 18px
+      color #888
+      input
+        display none
+
+      label
+        cursor: pointer
+        float: right
+        font-weight: 600
+
+        &:hover,
+        &:hover ~ label
+          color #000
+        &.active::before
+          content "\2605"
+          position absolute
+
+
+aside .block
+  padding 10px
+  margin-bottom 10px
+  background #ddd
+  box-shadow 0 0 1px #000
+
+  & .search
+    width 90%
+    height: 30px
+    padding 1% 4%
+
+  select
+    width 100%
+    padding 7px 10px
+
+  .btn
+    button()
+  a.btn
+    button()
+    display: inline-block
+    width 84%
+    text-align center
+
+.sort-block
+  color #888
+
+#files
+  display none
+
+  & + label
+    width 85%
+    display: block
+    text-align: center
+    cursor: pointer
+

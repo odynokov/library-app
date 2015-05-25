@@ -1,0 +1,180 @@
+@import '../../../node_modules/stylus-normalize/normalize'
+@import '../../../node_modules/jeet/stylus/jeet/index'
+@import '../../../node_modules/nib/lib/nib/index'
+
+footer-height = 30px
+nav-height = 50px
+blue = #223E57
+
+bars()
+  background url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAUCAYAAADskT9PAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABpSURBVEiJ7dSxEYAgEETRf0BLFqDWZHEGaF3OwKwBRSwB28D7AUdIuoETz2pIaiYcgOTEpwnoRr+HpA04TAFPSDLZYwW4gN3kv+sMV0BIsj9Ckz1WAPtH9AHZFNCTEQfI9iuYIqAa/foDc6UmhbeNSeAAAAAASUVORK5CYII=') no-repeat
+
+
+html
+  position: relative;
+  min-height: 100%;
+
+body
+  display flex
+  overflow-x hidden
+  min-height: 100vh;
+  flex-direction: column;
+  background: #eee
+
+h1,
+h2
+  color blue
+
+header
+  animation AppearFromTop .5s ease-in-out
+
+main
+  animation AppearFromLeft .5s ease-in-out
+  col(3/4)
+
+aside
+  animation AppearFromRight .5s ease-in-out
+  col(1/4)
+  margin-top 15px
+
+.container
+  center(960px)
+  padding 0 20px
+
+.wrapper
+  flex 1
+
+footer
+  overflow-y hidden
+  background: #ccc
+  animation AppearFromLeft .5s ease-in-out
+
+
+nav
+  #toggle-sidebar-button
+    display none
+
+  background: blue
+  height: nav-height
+  margin-bottom 40px
+  ul
+    margin 0
+  a
+    color: #fff
+    text-decoration: none
+    display: block
+    padding 15px 20px
+
+    &.active
+      background: lighten(blue, 20)
+  li
+    list-style: none
+    display inline-block
+
+    &:hover
+      background: lighten(blue, 20)
+
+.pull-right
+  float right
+
+h1
+  margin-top 0
+
+@keyframes Appear
+  0%
+    opacity 0
+    transform rotateY(90deg)
+  100%
+    opacity 1
+
+AppearAnimation(effect)
+  0%
+    opacity 0
+    transform effect
+  100%
+    opacity 1
+
+
+@keyframes AppearFromLeft
+  AppearAnimation(translateX(-100%))
+
+@keyframes AppearFromRight
+  AppearAnimation(translateX(100%))
+
+@keyframes AppearFromTop
+  AppearAnimation(translateY(-100%))
+
+@keyframes AppearFromBottom
+  AppearAnimation(translateY(100%))
+
+@keyframes ShowPopup
+  0%
+    opacity 0
+    transform translateY(100%)
+  20%
+    opacity 1
+    transform translateY(0)
+  80%
+    opacity 1
+    transform translateY(0)
+  100%
+    opacity 0
+    transform translateY(100%)
+
+.popup
+  position fixed
+  bottom 0
+  left 0
+  width 100%
+  text-align: center
+  background blue
+  opacity 0
+  color #fff
+  padding 10px 30px
+
+  &.active
+    animation ShowPopup 2s ease-in
+
+.bars
+  bars()
+  width 20px
+  height 20px
+  display block
+
+.toggle-sidebar-button
+  display none
+
+@media(max-width: 900px)
+  .toggle-sidebar-button
+    display block
+
+  aside
+    col(1)
+    background #fff
+    border 1px solid #ccc
+    padding 15px
+    display none
+    position fixed
+    right 5px
+    top 50px
+    width 210px
+  .container
+    center(620px)
+    padding 0 20px
+
+  main
+    col(1)
+
+  article
+    text-align center
+    .extra-block
+      float none
+
+      margin 0
+      img
+        max-width 220px
+        width 220px
+        margin 0 auto
+
+    .info-block
+      text-align left
