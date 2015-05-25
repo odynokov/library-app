@@ -4,7 +4,7 @@
   "description": "A simple library application",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm install; webpack; http-server"
   },
   "author": "Vyacheslav Odinokov <v.odinokov@outlook.com>",
   "license": "MIT",
