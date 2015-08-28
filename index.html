@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <base href="/">
+        <title>Библиотека</title>
+        <link rel="author" href="humans.txt">
+        <script src="assets/commons.js"></script>
+        <script src="assets/main.js"></script>
+    </head>
+    <body>
+        <div class="wrapper" ng-view></div>
+        <footer>
+            <div class="container">
+                <p>© 2015 Vyacheslav Odynokov</p>
+            </div>
+        </footer>
+        <div class="popup"></div>
+        <script>
+            var toggleSideBar = function() {var sidebar = document.querySelector('aside');sidebar.style.display = sidebar.style.display == '' ? 'block' : ''}
+        </script>
+    </body>
+</html>

@@ -1,0 +1,8 @@
+# Пока что не представляю, как продвигать одностраничное приложение в сети
+# Досутп к сату роботам закрыт
+
+User-agent: *
+Disallow: /
+
+HOST: http://lib.odynokov.com
+Sitemap: http://lib.odynokov.com/sitemap.xml

@@ -1,0 +1,14 @@
+/* TEAM */
+  UI developer, Web Designer: Vyacheslav Odynokov
+  Contact: v.odynokov [at] outlook.com
+  Twitter: @odynokov
+  From: Kiev, Ukraine
+
+/* SITE */
+  Last update:2015/05/22
+  Language: Russian
+  Doctype: HTML5
+  Standards: HTML5, CSS3
+  IDE: WebStorm 10.0.2
+  Components: AngularJS, CoffeeScript, Stylus
+  CSS Framework: Jeet
