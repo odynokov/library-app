@@ -1,5 +1,5 @@
 # Home library application
-Simple home library application.
+Simple home library application I wrote as a test assignment for SmartCloudSolutions company.
 
 **Features:**
 
@@ -17,4 +17,5 @@ Simple home library application.
 - infinite scrolling;
 - using WebStorage as book storage.
 
-
+## Demo
+See online demo http://vjace.github.io/library-app/
