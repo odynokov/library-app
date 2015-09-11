@@ -1,21 +1,20 @@
 # library-app
-Приложение для управления книгами.
+Simple home library application.
 
-Возможности:
+**Features:**
 
-- создание, редактирование, удаление книг;
-- экспорт книг в json-файл;
-- импорт книг из json-файла;
-- загрузка демонстрационных данных;
-- возможность присваивать книгам рейтинг;
-- поиск по книгам, авторам, жанрам, рейтингу, году издания;
-- возможность загружать обложку;
-- возможность прикреплять ссылку на книгу для чтения в сети;
-- возможность сортировать книги по названию, писателям, рейтингу, году публикации.
+- add, edit, remove books;
+- export books to json file;
+- import books from json file;
+- load demo data;
+- book star rating;
+- search by book titles, authors, genres, rating, publication date;
+- load cover url from external source;
+- add external url to book page;
+- sort book by title, author, rating, publication date;
+- responsive design;
+- microdata for SERP;
+- infinite scrolling;
+- using WebStorage as book storage.
 
-Особенности:
 
-- в качестве хранилища используется Web Storage;
-- адаптивная верстка;
-- микроданные для SERP;
-- бесконечная прокрутка (книги добавляются по 3 штуки).
