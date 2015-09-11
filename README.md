@@ -1,4 +1,4 @@
-# library-app
+# Home library application
 Simple home library application.
 
 **Features:**
