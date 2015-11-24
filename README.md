@@ -18,7 +18,7 @@ Simple home library application I wrote as a test assignment for SmartCloudSolut
 - using WebStorage as book storage.
 
 ## Demo
-See online demo http://vjace.github.io/library-app/
+See online demo http://odynokov.github.io/library-app/
 
 ## Used technologies
 NodeJS, AngularJS, CoffeeScript, Jade, Stylus, Webpack
