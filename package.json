@@ -19,7 +19,7 @@
     "jade": "^1.9.2",
     "jade-loader": "^0.7.1",
     "jeet": "^6.1.2",
-    "lodash": "^3.8.0",
+    "lodash": "^4.17.15",
     "nib": "^1.1.0",
     "node-libs-browser": "^0.5.0",
     "style-loader": "^0.12.2",
