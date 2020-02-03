@@ -1,5 +1,5 @@
 {
-  "name": "Library",
+  "name": "library-app",
   "version": "1.0.0",
   "description": "A simple library application",
   "main": "server.js",
